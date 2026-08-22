@@ -71,7 +71,11 @@ def quantize_mx_block(values: list[int]) -> list[int]:
         value_e4m3_exp = (value_e4m3 >> 3) & 0b1111
         value_e4m3_mantissa = value_e4m3 & 0b111
 
-        value_e4m3_exp -= scale_exp
+        # Check value is non zero
+        if value_e4m3_exp == 0b0000 and value_e4m3_mantissa == 0b000:
+             pass
+        else:
+            value_e4m3_exp -= scale_exp
 
         e4m3_values.append(construct_e4m3(value_e4m3_sign, value_e4m3_exp, value_e4m3_mantissa))
 
