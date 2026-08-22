@@ -6,7 +6,7 @@ Implementation of dot product in Python using MXFP8 and E8M0 microscaling. Proje
 - Implemented FMA (Fused Multiply-Add) to prevent unnecessary rounding and improve accuracy
 - Implemented decoding and conversion between FP32 and E4M3
 - Implemented E8M0 scale selection for microscaling across MXFP8 blocks
-- Handled edge cases including subnormals, overflow, underflow, zero, NaN, and infinities
+- Implemented handling for edge cases including subnormals, overflow, underflow, zero, NaN, and infinities
 
 ## How it works
 - `mx_dot_block(A, B)` is the main function, computing the dot product of two vectors (of length 32). It immediately calls `quantize_mx_block()` for both A and B, which selects the E8M0 scale factor and converts each block into E4M3 for arithmetic
