@@ -38,7 +38,7 @@ def choose_scale(values: list[int]) -> int:
     if absolute_max["subnormal"] == 0:
         # From setting 1.f x 2^e / 2^s ≤ 448, where 2^s is the scale factor
         # We find that 1.f x 2^(e-8) ≤ 1.75 x 2^s
-        if max_mantissa > 0b10000000000000000000000: # 0.75 
+        if max_mantissa > 0b1110000000000000000000000: # 1.75
             scale_exponent = max_exp - 8 - 1
         else:
             scale_exponent = max_exp - 8
@@ -223,8 +223,8 @@ def mx_dot_block(A: list[int], B: list[int]) -> int:
 
 
 # <----- TESTING ----->
-A = [0b00111111100000000000000000000000] * 32   # 1.0
-B = [0b01000000000000000000000000000000] * 32   # 2.0
+A = [0x3F800000, 0x40000000, 0x40400000, 0x40800000] * 8
+B = [0x3F000000, 0xBF800000, 0x40000000, 0xBF000000] * 8
 
 result = mx_dot_block(A, B)
 print(bin(result))
