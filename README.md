@@ -13,8 +13,9 @@ Implementation of dot product in Python using MXFP8 and E8M0 microscaling. Proje
 - For each pair of elements in A and B, it calls `FMA_multiply_add(a, b, c)`, in order to multiply A[i] and B[i], which is added to the current sum
 - The sum is then scaled by the E8M0 scale factor, and the result of the dot product is returned as an FP32
 
+<h3 align="center">Example</h3>
+
 <p align="center">
-  <strong>Example Output</strong><br>
   <img src="images/demo.png" width="700" alt="MXFP8 dot product example">
 </p>
 
