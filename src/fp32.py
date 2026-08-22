@@ -50,7 +50,7 @@ def is_greater_absolute_fp32(x: int, y: int) -> bool:
     elif dict_x["NAN"] == 0 and dict_y["NAN"] == 1:
         return True
     elif dict_x["NAN"] == 1 and dict_y["NAN"] == 1:
-        return None
+        return False
 
     # Compare exponents
     elif dict_x["exponent"] > dict_y["exponent"]:
