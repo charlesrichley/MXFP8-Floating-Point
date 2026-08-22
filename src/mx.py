@@ -222,9 +222,9 @@ def mx_dot_block(A: list[int], B: list[int]) -> int:
     return dot_sign_FP32 | dot_exp_FP32 | dot_mantissa_FP32
 
 
-# <-- TESTING -->
+# <----- TESTING ----->
 A = [0b00111111100000000000000000000000] * 32   # 1.0
 B = [0b01000000000000000000000000000000] * 32   # 2.0
-result = mx_dot_block(A, B)
 
+result = mx_dot_block(A, B)
 print(bin(result))
