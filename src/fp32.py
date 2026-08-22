@@ -53,16 +53,16 @@ def is_greater_absolute_fp32(x: int, y: int) -> bool:
         return False
 
     # Check for subnormals
-    elif dict_x["subnormal"] == 1 and dict_y["subnormal] == 1:
+    elif dict_x["subnormal"] == 1 and dict_y["subnormal"] == 1:
         # Compare mantissas
         if dict_x["mantissa"] > dict_y["mantissa"]:
             return True
         return False
 
-    elif dict_x["subnormal"] == 0 and dict_y["subnormal] == 1:
+    elif dict_x["subnormal"] == 0 and dict_y["subnormal"] == 1:
         return True
 
-    elif dict_x["subnormal"] == 1 and dict_y["subnormal] == 0:
+    elif dict_x["subnormal"] == 1 and dict_y["subnormal"] == 0:
         return False
     
     # Compare exponents
