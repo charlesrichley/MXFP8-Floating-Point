@@ -14,7 +14,7 @@ Implementation of dot product in Python using MXFP8 and E8M0 microscaling. Proje
 - The sum is then scaled by the E8M0 scale factor, and the result of the dot product is returned as an FP32
 
 ## Remaining work
-- Fix remaining implementation issues: `reconstruct_mx_block()` should take the scale as an argument, `e4m3_to_fp32()` needs to account for more edge cases
+- Fix remaining implementation issues: `reconstruct_mx_block()` should take the scale as an argument, `e4m3_to_fp32()` needs to account for more edge cases, `choose_scale()` doesn't always assign an exponent, reverse order of scale and quantization to E4M3 in `quantize_mx_block()`
 - Implement `mx_dot(A, B)` as the sum of block dot products (extension to arbitrary vector lengths)
 - Extensive testing and verification on regular and edge cases including: all ones, zeros, mixed signs, mixed magnitudes and random vectors
 - Write up project report, including absolute/relative error with a comparison to NumPy FP32 dot product
