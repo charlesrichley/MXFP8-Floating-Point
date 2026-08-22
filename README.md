@@ -1,6 +1,6 @@
 # OCP MXFP8 (E4M3) Dot Product
 
-Implementation of dot product in Python using MXFP8 and E8M0 microscaling. Project completed during my internship at Axiomise in August 2026.
+Implementation of dot product in Python using MXFP8 and E8M0 microscaling. Project developed during my internship at Axiomise in August 2026.
 
 ## Summary
 - Implemented FMA (Fused Multiply-Add) to prevent unnecessary rounding and improve accuracy
