@@ -2,6 +2,8 @@
 
 Implementation of dot product in Python using MXFP8 and E8M0 microscaling. Project developed during my internship at Axiomise in August 2026.
 
+[Original task specification](specification.pdf)
+
 ## Summary
 - Implemented FMA (Fused Multiply-Add) to prevent unnecessary rounding and improve accuracy
 - Implemented decoding and conversion between FP32 and E4M3
