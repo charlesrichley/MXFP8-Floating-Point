@@ -58,7 +58,7 @@ def choose_scale(values: list[int]) -> int:
     return scale_exponent + 127
 
 # FP32 to MXFP8 conversion
-def quantize_mx_block(values: list[int]) -> list[int]:
+def quantize_mx_block(values: list[int]) -> tuple[int, int]:
     # Argument is values, array of FP32 numbers
 
     scale_exp = choose_scale(values) - 127
@@ -150,7 +150,7 @@ def FMA_multiply_add(a: int, b: int, c: int) -> int:
     if (a_exponent == 0 and a_mantissa == 0) or (b_exponent == 0 and b_mantissa == 0):
         return c
 
-    # Now a x b is higher precision than E4M3 to prevent unneessary rounding
+    # Now a x b is higher precision than E4M3 to prevent unnecessary rounding
     ab_sign = a_sign ^ b_sign # XOR so sign is negative only when a,b have different signs, else +ve
     ab_exponent = a_exponent + b_exponent
     ab_mantissa = a_mantissa * b_mantissa
