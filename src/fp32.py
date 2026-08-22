@@ -37,45 +37,45 @@ def decode_fp32(x: int) -> int:
     
     return return_dict
 
-def is_greater_absolute_fp32(x: int, y: int) -> bool:
+def is_greater_absolute_fp32(x: int, y: int) -> int:
     # Arguments are x, y both FP32 numbers
-    # Returns True if abs(x) > abs(y), else False
+    # Returns 1 if abs(x) > abs(y), else -1
 
     dict_x = decode_fp32(x)
     dict_y = decode_fp32(y)
 
     # Check for NAN's
     if dict_x["NAN"] == 1 and dict_y["NAN"] == 0:
-        return False
+        return -1
     elif dict_x["NAN"] == 0 and dict_y["NAN"] == 1:
-        return True
+        return 1
     elif dict_x["NAN"] == 1 and dict_y["NAN"] == 1:
-        return False
+        return -1
 
     # Check for subnormals
     elif dict_x["subnormal"] == 1 and dict_y["subnormal"] == 1:
         # Compare mantissas
         if dict_x["mantissa"] > dict_y["mantissa"]:
-            return True
-        return False
+            return 1
+        return -1
 
     elif dict_x["subnormal"] == 0 and dict_y["subnormal"] == 1:
-        return True
+        return 1
 
     elif dict_x["subnormal"] == 1 and dict_y["subnormal"] == 0:
-        return False
+        return -1
     
     # Compare exponents
     elif dict_x["exponent"] > dict_y["exponent"]:
-        return True
+        return 1
     elif dict_x["exponent"] < dict_y["exponent"]:
-        return False
+        return -1
 
     # Must have equal exponents, so compare mantissas
     elif dict_x["mantissa"] > dict_y["mantissa"]:
-        return True
+        return 1
     elif dict_x["mantissa"] < dict_y["mantissa"]:
-        return False
+        return -1
 
     # Absolute value must be equal (same mantissa and exponent)
-    return False
+    return -1
