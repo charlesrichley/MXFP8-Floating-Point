@@ -13,7 +13,9 @@ Implementation of dot product in Python using MXFP8 and E8M0 microscaling. Proje
 - For each pair of elements in A and B, it calls `FMA_multiply_add(a, b, c)`, in order to multiply A[i] and B[i], which is added to the current sum
 - The sum is then scaled by the E8M0 scale factor, and the result of the dot product is returned as an FP32
 
-<img src="images/demo.png" width="600">
+<p align="center">
+  <img src="images/demo.png" width="700">
+</p>
 
 ## Remaining work
 - Fix remaining implementation issues: `reconstruct_mx_block()` should take the scale as an argument, `e4m3_to_fp32()` needs to account for more edge cases, `choose_scale()` doesn't always assign an exponent, reverse order of scale and quantization to E4M3 in `quantize_mx_block()`
