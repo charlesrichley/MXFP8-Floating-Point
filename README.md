@@ -2,7 +2,7 @@
 
 Implementation of dot product in Python using MXFP8 and E8M0 microscaling
 
-### Summary
+## Summary
 - Implemented FMA (Fused Multiply-Add) to prevent unnecessary rounding and improve accuracy
 - Implemented decoding and conversion between FP32 and E4M3
 - Implemented E8M0 scale selection for microscaling across MXFP8 blocks
