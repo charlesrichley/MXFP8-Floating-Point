@@ -209,6 +209,9 @@ def mx_dot_block(A: list[int], B: list[int]) -> int:
     for i in range(32):
         dot_E4M3 = FMA_multiply_add(A_e4m3[i], B_e4m3[i], dot_E4M3)
 
+    if dot_E4M3 & ((2**7) - 1) == 0:
+        return 0
+
     # Convert to FP32, then multiply by 2^(A_scale + B_scale)
     dot_FP32 = e4m3_to_fp32(dot_E4M3)
     dot_sign_FP32 = dot_FP32 & (2**31)
@@ -223,8 +226,8 @@ def mx_dot_block(A: list[int], B: list[int]) -> int:
 
 
 # <----- TESTING ----->
-A = [0x3F800000, 0x40000000, 0x40400000, 0x40800000] * 8
-B = [0x3F000000, 0xBF800000, 0x40000000, 0xBF000000] * 8
+A = [0x3F800000] + [0x00000000] * 31
+B = [0x00000000, 0x3F800000] + [0x00000000] * 30
 
 result = mx_dot_block(A, B)
 print(bin(result))
